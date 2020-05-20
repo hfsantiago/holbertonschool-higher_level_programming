@@ -1,5 +1,5 @@
-ng class Square """
-
+#!/usr/bin/python3
+""" defining class Square """
 
 class Square:
     """ initializing self """
