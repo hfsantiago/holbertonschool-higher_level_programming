@@ -1,55 +1,58 @@
 #!/usr/bin/python3
-'''Square class'''
+""" Square class """
 
 
 class Square:
-    '''private instance attribute size'''
+    """ Square instances """
     def __init__(self, size=0, position=(0, 0)):
-        '''inalitation with size'''
         self.size = size
         self.position = position
 
+    """ Computes square area """
+    def area(self):
+        res = self.__size * self.__size
+        return res
+
+    """ Computes square size """
     @property
     def size(self):
-        '''size getter'''
         return self.__size
 
+    """ Sets square size """
     @size.setter
     def size(self, value):
-        '''size setter'''
-        if type(value) is not int:
+        if type(value) != int:
             raise TypeError("size must be an integer")
-        if value < 0:
-            raise ValueError("size must be >=0")
+        elif value < 0:
+            raise ValueError("size must be >= 0")
         self.__size = value
 
-    def area(self):
-        '''return the square area'''
-        return self.__size ** 2
-
+    """ Prints all """
     def my_print(self):
-        '''prints square with '#' character'''
-        if self.__size == 0:
-            print("")
-        if self.__position[1] > 0:
+        if self.__size > 0:
             for i in range(self.__position[1]):
                 print("")
-        for i in range(self.__size):
-            print("{}".format(" " * self.__position[0]), end="")
-            for j in range(self.__size):
-                print('#', end="")
+            for i in range(self.__size):
+                for j in range(self.__position[0]):
+                    print(" ", end="")
+                for j in range(self.__size):
+                    print("#", end="")
+                print("")
+        else:
             print("")
 
+    """ Define position property """
     @property
     def position(self):
-        '''getter for position'''
         return self.__position
 
+    """ Sets position """
     @position.setter
     def position(self, value):
-        '''sets a position of a square'''
-        if type(value) is not tuple or value[0] < 0 or value[1] < 0 or \
-           type(value[0]) is not int or type(value[1]) is not int or \
-           len(value) != 2:
+        if type(value) != tuple or len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if type(value[0]) != int or type(value[1]) != int:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
