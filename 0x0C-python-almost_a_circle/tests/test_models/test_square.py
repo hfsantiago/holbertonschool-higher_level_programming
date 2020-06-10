@@ -26,7 +26,7 @@ class TestSquare(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['tests/test_models/test_square.py'])
         self.assertEqual(result.total_errors, 1,
-                         "Found code style errors (and warnings).")
+                          "Found code style errors (and warnings).")
 
     def test_00_documentation(self):
         """Test to see if documentation is created and correct"""
